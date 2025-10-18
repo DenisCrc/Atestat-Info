@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+void citire(int A[], int n)
+{
+    if(n>0)
+    {
+        citire(A,n-1);
+        cin>>A[n];
+    }
+}
+int sumcifp(int n, int p)
+{
+    if(n==0) return 0;
+    else if(n%2==p) return sumcifp(n/10,p)+n%10;
+         else return sumcifp(n/10,p);
+}
+void inlocuire(int A[], int n)
+{
+    if(n>0)
+    {
+        inlocuire(A,n-1);
+        A[n]=sumcifp(A[n],n%2);
+    }
+}
+void afisare(int A[], int n)
+{
+    if(n>0)
+    {
+        afisare(A,n-1);
+        cout<<A[n]<<" ";
+    }
+}
+int main()
+{
+    int A[101],n;
+    cin>>n;
+    citire(A,n);
+    inlocuire(A,n);
+    afisare(A,n);
+    return 0;
+}
+

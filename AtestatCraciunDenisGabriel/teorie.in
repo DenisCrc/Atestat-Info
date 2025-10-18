@@ -1,0 +1,169 @@
+Spunem ca o notiune este definita recursiv, daca in definirea ei apare insasi notiunea care se defineste.
+Recursivitatea este un mecanism general de elaborare a algoritmilor.
+O functie se numeste recursiva daca ea se autoapeleaza, fie direct (in definitia ei, se face apel la ea insasi), fie indirect (functia X apeleaza functia Y, care apeleaza functia X).
+In informatica numim recursivitate directa, proprietatea functiilor de a se autoapela.
+Recursivitatea a aparut din necesitati practice date de transcrierea directa a formulelor matematice recursive.
+Apoi, acest mecanism a fost extins, fiind utilizat in elaborarea multor algoritmi.
+
+Structura unei functii recursive:
+tip nume_functie(lista de parameri)
+{.................
+if(conditie de continuare sau de oprire)
+.................
+nume_functie(lista de parametri);
+.................. }
+
+Sa vedem care este mecanismul prin care subprogramele se pot autoapela.
+Se stie ca la apelul fiecarui subprogram, se genereaza un nou nivel in segmentul de stiva, corespunzator acelui apel. Pe acel nivel se memoreaza :
+-valorile parametrilor transmisi prin valoare
+-adresele parametrilor transmisi prin referinta
+-variabilele locale
+-adresa de revenire din functie
+
+De fiecare data cand o functie se autoapeleaza, se creeaza un nou nivel in segmentul de stiva.
+
+Fiecare apel de functie lucreaza cu datele aflate pe nivelul corespunzator acelui apel.
+La iesirea din apelul unei functii, nivelul respectiv se elibereaza si datele aflate acolo se pierd.
+Exista posibilitatea ca subprogramul sa lucreze direct cu variabilele globale, dar in acest caz, subprogramul isi pierde independenta.
+
+Exemple de rationament recursiv:
+
+O camera de luat vederi are in obiectiv un televizor care transmite imaginile primite de la camera.
+In televizor se vede un televizor in care se vede un televizor…
+Anunt: Azi nu se fumeaza!
+O gandire recursiva exprima concentrat o anumita stare, care se repeta la infinit.
+Aceasta gandire se aplica in elaborarea algoritmilor recursivi cu o modificare esentiala: adaugarea conditiei de terminare.
+In absenta acestei conditii nu se poate vorbi despre un algoritm deoarece acestia sunt finiti. Din acest punct de vedere, exemplele de mai sus nu sunt corecte.
+Atunci cand gandim un algoritm recursiv, privim problema la un anumit nivel. Ce se intampla la acel nivel se va intampla la toate celelalte.
+
+Observatii:
+-In cazul unui numar mare de autoapelari, exista posibilitatea ca segmentul de stiva sa se ocupe total, caz in care programul se va termina cu eroarea STACK OVERFLOW.
+Aceasta se intampla mai ales atunci cand conditia de terminare este pusa gresit si subprogramul se apeleaza la nesfarsit.
+-Pentru orice algoritm recursiv exista unul iterativ care rezolva aceeasi problema.
+-Mecanismul recursivitatii inlocuieste instructiunile repetitive.
+-Datorita faptului ca la fiecare autoapel se ocupa o zona de memorie, recursivitatea este eficienta numai daca numarul de autoapelari nu este prea mare pentru a nu se ajunge la umplerea zonei de memorie alocata.
+-Recursivitatea ofera avantajul unor solutii mai clare pentru probleme si a unei lungimi mai mici a programului.
+Ea prezinta insa dezavantajul unui timp mai mare de executie si a unui spatiu de memorie alocat mai mare.
+Este de preferat ca atunci cand programul recursiv poate fi transformat cu usurinta intr-unul iterativ sa se faca apel la cel din urma (ca de exemplu, sirul lui Fibonacci).
+Observatii importante:
+
+Observatii importante:
+-Orice functie recursiva trebuie sa contina o conditie de reluare a apelului recursiv (sau de oprire).
+Fara aceasta conditie, functia teoretic se reapeleaza la infinit, dar nu se intampla acest lucru, deoarece se umple segmentul de stiva alocat functiei si programul se intrerupe cu eroare.
+-La fiecare reapel al functiei se executa aceeasi secventa de instructiuni.
+-Tinand seama de observatiile anterioare, pentru a implementa o functie recursiva, trebuie sa:
+   *Identificam relatia de recurenta (ceea ce se executa la un moment dat si se reia la fiecare reapel).
+   *Identificam conditiile de oprire ale reapelului.
+-In cazul in care functia are parametri, acestia se memoreaza ca si variabilele locale pe stiva, astfel:
+   *Parametrii transmisi prin valoare se memoreaza pe stiva cu valoarea din acel moment.
+   *Pentru parametrii transmisi prin referinta se memoreaza adresa lor.
+
+In momentul apelarii unui subprogram (functie), sistemul pune la dispozitia subprogramului un segment de stiva pentru memorarea parametrilor constanti, a adreselor parametrilor variabili (transmisi prin referinta) si a variabilelor locale.
+La fiecare reapel se memoreaza adresa instructiunii urmatoare apelului, se creeaza un nou nivel pe stiva, memorandu-se parametrii si variabilele locale cu valorile din acel moment.
+Pentru a gandi o functie recursiva, stabilim ce se executa la o anumita etapa, apoi reluam procedeul pentru toate celelalte elemente ramase, prin reapelarea functiei, avand grija sa impunem conditii de oprire ale reapelarii functiei.
+In informatica numim recursivitate indirecta, proprietatea functiilor de a se autoapela prin intermediul altor functii.
+O functie se poate autoapela prin intermediul uneia sau mai multor alte functii.
+In acest caz obtinem o recursivitate indirecta a functiei respective.
+
+Structura unei functii recursive indirect apelate prin intermediul unei alte functii:
+
+cpp:
+Copy code
+tip b(lista de parameri)
+{
+    a(lista de parametri); // functia b apeleaza functia a
+}
+Exemplu:
+Se considera sirurile definite recurent astfel:
+a0=a, b0=b ,a,b>0;
+an=(an-1+bn-1)/2 , bn= an-1 bn-1.
+Vom construi doua functii recursive cu formulele de recurenta date de expresiile date anterior.
+Functia an(n) pentru construirea elementelor sirului an si functia bn(n) pentru construirea elementelor sirului bn.
+Conditiile de oprire ale recursivitatii vor fi n=0 pentru care ultimii termeni ai sirului sunt definiti explicit a0=a, respectiv b0=b.
+
+
+Sigur! Iată textul fără diacritice:
+
+Fiecare apel de functie lucreaza cu datele aflate pe nivelul corespunzator acelui apel. La iesirea din apelul unei functii, nivelul respectiv se elibereaza si datele aflate acolo se pierd. Exista posibilitatea ca subprogramul sa lucreze direct cu variabilele globale, dar in acest caz, subprogramul isi pierde independenta.
+
+Exemple de rationament recursiv:
+
+O camera de luat vederi are in obiectiv un televizor care transmite imaginile primite de la camera. In televizor se vede un televizor in care se vede un televizor…
+Anunt: Azi nu se fumeaza!
+O gandire recursiva exprima concentrat o anumita stare, care se repeta la infinit. Aceasta gandire se aplica in elaborarea algoritmilor recursivi cu o modificare esentiala: adaugarea conditiei de terminare. In absenta acestei conditii nu se poate vorbi despre un algoritm deoarece acestia sunt finiti. Din acest punct de vedere, exemplele de mai sus nu sunt corecte. Atunci cand gandim un algoritm recursiv, privim problema la un anumit nivel. Ce se intampla la acel nivel se va intampla la toate celelalte.
+Observatii:
+
+In cazul unui numar mare de autoapelari, exista posibilitatea ca segmentul de stiva sa se ocupe total, caz in care programul se va termina cu eroarea STACK OVERFLOW. Aceasta se intampla mai ales atunci cand conditia de terminare este pusa gresit si subprogramul se apeleaza la nesfarsit.
+Pentru orice algoritm recursiv exista unul iterativ care rezolva aceeasi problema.
+Mecanismul recursivitatii inlocuieste instructiunile repetitive.
+Datorita faptului ca la fiecare autoapel se ocupa o zona de memorie, recursivitatea este eficienta numai daca numarul de autoapelari nu este prea mare pentru a nu se ajunge la umplerea zonei de memorie alocata.
+Recursivitatea ofera avantajul unor solutii mai clare pentru probleme si a unei lungimi mai mici a programului. Ea prezinta insa dezavantajul unui timp mai mare de executie si a unui spatiu de memorie alocat mai mare. Este de preferat ca atunci cand programul recursiv poate fi transformat cu usurinta intr-unul iterativ sa se faca apel la cel din urma (ca de exemplu, sirul lui Fibonacci).
+Observatii importante:
+
+Orice functie recursiva trebuie sa contina o conditie de reluare a apelului recursiv (sau de oprire). Fara aceasta conditie, functia teoretic se reapeleaza la infinit, dar nu se intampla acest lucru, deoarece se umple segmentul de stiva alocat functiei si programul se intrerupe cu eroare.
+La fiecare reapel al functiei se executa aceeasi secventa de instructiuni.
+Tinand seama de observatiile anterioare, pentru a implementa o functie recursiva, trebuie sa:
+Identificam relatia de recurenta (ceea ce se executa la un moment dat si se reia la fiecare reapel).
+Identificam conditiile de oprire ale reapelului.
+In cazul in care functia are parametri, acestia se memoreaza ca si variabilele locale pe stiva, astfel:
+Parametrii transmisi prin valoare se memoreaza pe stiva cu valoarea din acel moment.
+Pentru parametrii transmisi prin referinta se memoreaza adresa lor.
+In momentul apelarii unui subprogram (functie), sistemul pune la dispozitia subprogramului un segment de stiva pentru memorarea parametrilor constanti, a adreselor parametrilor variabili (transmisi prin referinta) si a variabilelor locale. La fiecare reapel se memoreaza adresa instructiunii urmatoare apelului, se creeaza un nou nivel pe stiva, memorandu-se parametrii si variabilele locale cu valorile din acel moment.
+Pentru a gandi o functie recursiva, stabilim ce se executa la o anumita etapa, apoi reluam procedeul pentru toate celelalte elemente ramase, prin reapelarea functiei, avand grija sa impunem conditii de oprire ale reapelarii functiei.
+In informatica numim recursivitate indirecta, proprietatea functiilor de a se autoapela prin intermediul altor functii.
+O functie se poate autoapela prin intermediul uneia sau mai multor alte functii. In acest caz obtinem o recursivitate indirecta a functiei respective.
+
+Structura unei functii recursive indirect apelate prin intermediul unei alte functii:
+
+cpp
+Copy code
+tip b(lista de parameri)
+{
+    a(lista de parametri); // functia b apeleaza functia a
+}
+Exemplu:
+Se considera sirurile definite recurent astfel:
+a0=a, b0=b ,a,b>0;
+an=(an-1+bn-1)/2 , bn= an-1 bn-1.
+Vom construi doua functii recursive cu formulele de recurenta date de expresiile date anterior.
+Functia an(n) pentru construirea elementelor sirului an si functia bn(n) pentru construirea elementelor sirului bn. Conditiile de oprire ale recursivitatii vor fi n=0 pentru care ultimii termeni ai sirului sunt definiti explicit a0=a, respectiv b0=b.
+
+cpp
+Copy code
+#include<cmath>
+#include <iostream>
+using namespace std;
+double an(int n);
+double bn(int n);
+double a,b;
+int main()
+{
+    int n;
+    cout<<"a=";cin>>a;
+    cout<<"b=";cin>>b;
+    cout<<"n=";cin>>n;
+    cout<<"an("<<n<<")="<<an(n)<<" bn("<<n<<")="<<bn(n); // apelul functiilor an() si bn();
+    return 0;
+}
+
+double an(int n)
+{
+    if(n>0)
+        return (an(n-1)+bn(n-1))/2; // functia an() se autoapeleaza direct, dar se autoapeleaza si indirect
+                                      // prin intermediul functiei bn()
+    else
+        return a;
+}
+
+double bn(int n)
+{
+    if(n>0)
+        return sqrt(an(n-1)*bn(n-1)); // functia bn() se autoapeleaza direct, dar se autoapeleaza si indirect
+                                        // prin intermediul functiei an();
+    else
+        return a;
+}
+
+Sa observam in programul de mai sus functia an. Functia an se autoapeleaza, dar apeleaza si functia bn.
+Pe de alta parte functia bn la randul ei se autoapeleaza dar apeleaza si functia an.
+Am obtinut astfel recursivitatea indirecta a functiei an prin intermediul functiei bn. Acelasi lucru se poate spune si despre functia bn.

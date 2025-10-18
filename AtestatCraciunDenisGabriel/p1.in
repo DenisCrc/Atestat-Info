@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int cmmdc(int x, int y)
+{ if(x%y==0) return y;
+  else return cmmdc(y,x%y);
+}
+int main()
+{
+    cin>>x>>y;
+    cout<<cmmdc(x,y);
+    system("pause");
+    return 0;
+}
