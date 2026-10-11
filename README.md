@@ -3,7 +3,7 @@
 ##  About the Project
 
 - **Theory** a detailed explanation of recursion as a programming concept (what it is, how the call stack works, conditions for termination, advantages, and pitfalls)
-- **7 Solved Problems** — each problem is shown both as annotated source code and as a live running demo from within the application
+- **7 Solved Problems**  each problem is shown both as annotated source code and as a live running demo from within the application
 
 The program reads its content (theory text and problem source code) from `.in` data files at runtime and displays them formatted in the console.
 
