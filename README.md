@@ -7,7 +7,7 @@
 
 The program reads its content (theory text and problem source code) from `.in` data files at runtime and displays them formatted in the console.
 
-## 🗂️ Repository Structure
+##  Repository Structure
 
 ```
 Atestat-Info/
