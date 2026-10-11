@@ -1,4 +1,4 @@
-#  Atestat Informatică — Recursivitate
+#  Atestat Informatică  Recursivitate
 
 ##  About the Project
 
