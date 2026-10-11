@@ -2,7 +2,7 @@
 
 ##  About the Project
 
-- **Theory** — a detailed explanation of recursion as a programming concept (what it is, how the call stack works, conditions for termination, advantages, and pitfalls)
+- **Theory** a detailed explanation of recursion as a programming concept (what it is, how the call stack works, conditions for termination, advantages, and pitfalls)
 - **7 Solved Problems** — each problem is shown both as annotated source code and as a live running demo from within the application
 
 The program reads its content (theory text and problem source code) from `.in` data files at runtime and displays them formatted in the console.
@@ -23,7 +23,6 @@ Atestat-Info/
 ##  Problems Covered
 
 | # | Problem | Concept |
-|---|---------|---------|
 | 1 | **Greatest Common Divisor (GCD)** | Classic recursive Euclid's algorithm |
 | 2 | **Read & Display a Matrix** | Recursive matrix traversal |
 | 3 | **Sum of digits by position in a vector** | Recursive vector operations |
@@ -43,13 +42,13 @@ Each problem is accessible from the main menu in two modes:
 The console application presents a numbered menu with **15 options**:
 
 ```
-(1)  Theory — Basic concepts of recursion
-(2)  Problem 1 — GCD (source)
-(3)  Problem 1 — GCD (demo)
-(4)  Problem 2 — Matrix read/display (source)
-(5)  Problem 2 — Matrix read/display (demo)
+(1)  Theory  Basic concepts of recursion
+(2)  Problem 1  GCD (source)
+(3)  Problem 1  GCD (demo)
+(4)  Problem 2  Matrix read/display (source)
+(5)  Problem 2  Matrix read/display (demo)
 ...
-(15) Problem 7 — Vector partitioning (demo)
+(15) Problem 7  Vector partitioning (demo)
 (0)  Exit
 ```
 
